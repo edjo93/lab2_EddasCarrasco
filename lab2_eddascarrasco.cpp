@@ -5,14 +5,14 @@ using std::endl;
 
 //prototipo de funcion
 void num_perfecto(int);
-int encontrar(int);
+bool verificar(int);
 
 int main(){
 	int opcion;//opcion entre 1 y 3
 	//estructura para elegir las opciones
 	
 	do{
-		cout<<"ingrese una opcion\n1.ejercicio1\n2.numeros perfectos\n3.ejercicio3\n4.salir\n?:";
+		cout<<"\ningrese una opcion\n1.ejercicio1\n2.numeros perfectos\n3.ejercicio3\n4.salir\n?:";
         	cin>>opcion;
 		switch(opcion){
 			case 1:
@@ -48,7 +48,7 @@ void num_perfecto(int num){
 	int sum=0;//se guarda la suma de los numeros anteriores al numero ingresado
 	for(int i=1;i<num;i++){
 		if(num%i==0){
-			sum+=num;
+			sum+=i;
 		}
 	}	
 
@@ -62,12 +62,18 @@ void num_perfecto(int num){
         }
 
 	}else{
+		int perfecto;
 		cout<<"el numero "<<num<<" no es perfecto!"<<endl;
-		cout<<"numero perfecto no mayor a "<<num<<" -->"<<encontrar(num);
-		int aux=encontrar(num);
+		for(int i=1;i<num;i++){
+			if(verificar(i)){
+				perfecto=i;
+			}
+		}
+		cout<<"numero perfecto no mayor a "<<num<<" -->"<<perfecto<<endl;
+		
 		cout<<"factores: ";
-                for(int i=1;i<aux;i++){
-                if(num%i==0){
+                for(int i=1;i<perfecto;i++){
+                if(perfecto%i==0){
                         cout<<i<<" ";
                 }
 
@@ -75,21 +81,19 @@ void num_perfecto(int num){
 	}
 }
 }
-//funcion que encuentra el numero perfecto no mayor a p
-int encontrar(int p){
-	int sum=0,perfecto;
-	for(int i=1;i<p;i++){
-		//se verifica si cada numero es perfecto
-		for(int j=1;j<i;j++){
-			if(i%j==0){
-				sum+=j;
-			}		
-		}
-		if(sum==i){
-			perfecto=i;
-		}
-	}
-	return perfecto;
+//funcion que verifica si un numero es perfecto 
+bool verificar(int num){
+	int sum=0;
+        for(int i=1;i<num;i++){
+                if(num%i==0){
+                        sum+=i;
+                }
+        }
+
+        return sum==num;
+                
+        
+
 }
 	
 
