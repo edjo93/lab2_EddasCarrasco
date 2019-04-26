@@ -2,12 +2,15 @@
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
 
 //prototipo de funcion
 void num_perfecto(int);
 bool verificar(int);
+int captcha1(string);
 
 int main(){
+	string cad;
 	int opcion;//opcion entre 1 y 3
 	//estructura para elegir las opciones
 	
@@ -16,6 +19,17 @@ int main(){
         	cin>>opcion;
 		switch(opcion){
 			case 1:
+				
+				//pedir datos
+				cout<<"ingrese una cadena par: ";
+				cin>>cad;
+
+				while(cad.length()%2!=0){
+					cout<<"error! la cadena debe ser par , intente de nuevo: ";
+					cin>>cad;
+				}
+
+
 
 				break;
 			case 2:
@@ -96,5 +110,8 @@ bool verificar(int num){
 
 }
 	
-
-
+/*
+int captcha1(string cadena){
+	
+}
+*/
